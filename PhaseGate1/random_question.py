@@ -1,3 +1,39 @@
-questions = str([(5 - 1), (3 - 8), (7 - 3), (2 - 5), (5 - 1), (2 - 6), (3 - 8), (5 - 9), (9 - 8), (8 - 3)])
+import random
 
-print(questions[0])
+passes = 0
+
+fail = 0
+
+number1 = random.randrange(0, 10)
+
+number2 = random.randrange(0, 10)
+
+result = number1 - number2
+
+for number in range (1, 11):
+
+	print(number1, '-', number2)
+
+	answer = int(input('Enter the result from the question: '))
+
+	if answer == result:
+
+		print('correct')
+
+		passes += 1
+
+	else:
+
+		print('incorrect')
+
+		fail += 1
+
+print('You passed', passes, 'times', 'and you failed', fail, 'times')
+
+
+
+
+
+
+
+
