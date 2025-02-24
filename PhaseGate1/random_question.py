@@ -4,6 +4,8 @@ passes = 0
 
 fail = 0
 
+score = 0
+
 number1 = random.randrange(0, 10)
 
 number2 = random.randrange(0, 10)
@@ -22,13 +24,18 @@ for number in range (1, 11):
 
 		passes += 1
 
+		score += 1
+
 	else:
 
 		print('incorrect')
 
 		fail += 1
 
+
 print('You passed', passes, 'times', 'and you failed', fail, 'times')
+
+print('You scored ', score, '/', 10)
 
 
 
