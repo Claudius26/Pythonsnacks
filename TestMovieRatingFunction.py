@@ -10,7 +10,7 @@ class TestMovieRatingFunction(unittest.TestCase):
 
 		actual = movie_rating.add_movie("merlin")
 
-		expected = {"movie": "merlin", "Date Added": actual["Date Added"] }
+		expected = {"movie": "merlin", "Date Added": actual["Date Added"], "rating": "no rating" }
 
 		self.assertEqual(actual, expected)
 
@@ -30,18 +30,40 @@ class TestMovieRatingFunction(unittest.TestCase):
 
 		self.assertEqual(actual, expected)
 
-	def test_that_function_can_rate_movie(self):
+	def test_that_function_can_rate_returns_invalid_rating_if_rating_is_out_of_range(self):
 
-		actual = movie_rating.add_ratings(2.0)
+		actual = movie_rating.is_rating_validated(5.1)
 
-		expected = 2.0
+		expected = False
 
 		self.assertEqual(actual, expected)
 
-	def test_that_function_can_rate_returns_invalid_rating_if_rating_is_out_of_range(self):
+	def test_that_function_can_rate_returns_invalid_False_if_wrong_input(self):
 
-		actual = movie_rating.add_ratings(5.1)
+		actual = movie_rating.is_rating_validated("s")
 
-		expected = "Invalid rating"
+		expected = False
+
+		self.assertEqual(actual, expected)
+
+	def test_that_function_can_rate_returns_movie_does_not_exist_if_movie_name_not_found(self):
+
+		actual = movie_rating.add_ratings("avatar", 4.5)
+
+		expected = "Movie does not exist"
+
+		self.assertEqual(actual, expected)
+
+	def test_that_function_can_rate_returns_rating(self):
+
+		movie_name = "merlin"
+
+		rating = 4.5
+
+		movie_rating.add_movie(movie_name)
+
+		actual = movie_rating.add_ratings("merlin", rating)
+
+		expected =  rating
 
 		self.assertEqual(actual, expected)
